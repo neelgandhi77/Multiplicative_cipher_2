@@ -1,0 +1,165 @@
+
+<html>
+<head>
+	
+
+<style>
+			
+			#title{height:30%;width: 50%; margin-top: 15px;margin-left: 30%}
+			#kw {
+				width: 25%;
+				height: 70%;			
+				margin-left: 25%;
+				padding-top: 20px;
+			}
+			#cd {width: 50%; height: 70%;margin-top: 45px;margin-left: 20%}
+			#cd div input {
+
+				width: 100px;
+				margin-left: 25px;
+				margin-right: 10px;
+					
+			}
+			button {
+				border-radius: 5px;
+				border: solid 2px black;
+				background-color: white;				
+			}
+			#res {width: 50%; height: 70%;margin-top: 200px;margin-left: 23%}			
+			input {
+				border-radius: 5px;
+				border: solid 2px black;
+				margin-top:30px;
+			}
+			.words {width:70%; height:50%;}
+			
+			#clearDiv {margin-top: 45px;margin-left: 40px}
+		</style>
+		</head>	
+		<script 
+		type="text/javascript" 
+		src="brython.js">
+	</script>
+	<script 
+		type="text/javascript" 
+		src="brython_stdlib.js">
+	</script>	
+
+
+<body onload="brython()" bgcolor="black">
+		<div id='title'>
+				<img src="imgs\M_1.png" class="words">
+			</div-->
+			<div id='kw' >
+				<div><img src="imgs\keyword.png" class="words"></div>
+				<div><input id='keywordIn'></div>
+				<div id='clearDiv'>
+					<button id='clearBtn'>
+						clear
+					</button>
+
+				</div>
+			</div>
+
+
+			<div id='cd'>
+			
+				<div>
+					<div>
+						<br>
+						<img src="imgs\toCipher.png" class="words">
+						<img src="imgs\toDecipher.png" class="words"></div>
+					<br>
+					<input id='cipherIn'>
+					<button id='cipherBtn'>>></button>
+				</div>
+
+				<div>
+
+					<input id='decipherIn'>
+					<button id='decipherBtn'>>></button>
+				</div>				
+			</div>
+			<div id='res'>
+				
+				
+				<input id='secretIn'>
+				<input id='messageIn'>				
+			</div>						
+		</div>
+	
+	</body>
+</html>
+
+
+<script type="text/javascript">
+
+var getByID = (id) => document.getElementById(id);
+var clearInput = (ip) => ip.value = '';
+clearFields = () => {
+	clearInput(getByID('keywordIn'));
+	clearInput(getByID('cipherIn')); 
+	clearInput(getByID('decipherIn'));
+	clearInput(getByID('secretIn'));
+	clearInput(getByID('messageIn'));
+};
+
+</script>
+
+
+
+<script type="text/python">
+# 1) Basic DOM manipulation :: turn on computer
+
+from browser import document
+
+#def turnOnComputer(event):
+	#document["pc"].src = "imgs\pcON.png"
+	#document["box"].classList.remove("hidden")
+
+#document["onoffBtn"].bind("click", turnOnComputer)
+
+# 2) How to import your code :: Activate cipher 
+
+#from AutoKeyCipher import * 
+from MULTIPLICATIVE import *
+from browser import document,alert 
+
+def encrypt(event):
+	text = document["cipherIn"].value
+	#tr = generateTR()
+	keyword = document["keywordIn"].value	
+
+	res = (Multiplicative_encrypt(text, int(keyword)))
+	
+	document["secretIn"].value = res;
+
+document["cipherBtn"].bind("click", encrypt)
+
+def a1(event):
+	alert("Multiplicative Inverse Not Possible bcoz GCD!=1")
+
+def decrypt(event):
+	text = document["decipherIn"].value
+	#tr = generateTR()
+	keyword = document["keywordIn"].value	
+	mI=0
+	mI=modInverse(int(keyword), 26)
+	#if (mI==-1):
+		
+		#document["decipherBtn"].bind("click", a1)
+	#else:
+	res = (Multiplicative_decrypt(text,mI, int(keyword)))
+	document["messageIn"].value = res;
+document["decipherBtn"].bind("click", decrypt)
+
+
+# 3) Use JavaScript objects :: clear fields
+
+from browser import window 
+
+def execJSFunc(event):
+	window.clearFields()
+
+document["clearBtn"].bind("click", execJSFunc)
+</script>
