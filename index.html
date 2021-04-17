@@ -4,6 +4,22 @@
 	
 
 <style>
+
+
+/* ----------- Non-Retina Screens ----------- */
+@media screen 
+  and (min-device-width: 1200px) 
+  and (max-device-width: 1600px) 
+  and (-webkit-min-device-pixel-ratio: 1) { 
+}
+
+/* ----------- Retina Screens ----------- */
+@media screen 
+  and (min-device-width: 1200px) 
+  and (max-device-width: 1600px) 
+  and (-webkit-min-device-pixel-ratio: 2)
+  and (min-resolution: 192dpi) { 
+}
 			
 			#title{height:30%;width: 50%; margin-top: 15px;margin-left: 30%}
 			#kw {
@@ -71,13 +87,13 @@
 						<img src="imgs\toDecipher.png" class="words"></div>
 					<br>
 					<input id='cipherIn'>
-					<button id='cipherBtn'>>></button>
+					<button id='cipherBtn' onclick="return validateForm1()">Encrypt</button>
 				</div>
 
 				<div>
 
 					<input id='decipherIn'>
-					<button id='decipherBtn'>>></button>
+					<button id='decipherBtn' onclick="return validateForm2()">Decrypt</button>
 				</div>				
 			</div>
 			<div id='res'>
@@ -103,6 +119,26 @@ clearFields = () => {
 	clearInput(getByID('secretIn'));
 	clearInput(getByID('messageIn'));
 };
+
+function validateForm1() {
+  var x = getByID('keywordIn').value;
+  var z = getByID('decipherIn').value;
+
+  if ((x == "") ||  (y == "")){
+    alert("Key or Plain text field is empty");
+    return false;
+  }
+}
+
+function validateForm2() {
+  var x = getByID('keywordIn').value;
+  var z = getByID('decipherIn').value;
+
+  if ((x == "") ||  (z == "")){
+    alert("Key or Cipher text field is empty");
+    return false;
+  }
+}
 
 </script>
 
