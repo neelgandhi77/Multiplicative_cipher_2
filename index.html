@@ -245,7 +245,7 @@ def decrypt(event):
 	keyword = document["keywordIn"].value	
 	mI=modInverse(int(keyword), 26)
 	if (mI==-1):
-		alert("Multiplicative Inverse Not Possible bcoz GCD!=1")
+		alert("Multiplicative Inverse Not Possible Bcoz GCD(key,26)!=1")
 		
 	
 	res = (Multiplicative_decrypt(text,mI, int(keyword)))
