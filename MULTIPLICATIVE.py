@@ -15,7 +15,7 @@ def Multiplicative_encrypt(Plaintext, key):
             newLetter = character[crypting]
             outText.append(newLetter)
     temp=''.join(map(str,outText))
-    return temp
+    return temp.upper()
 
 
 # function modular multiplicative inverse
@@ -51,7 +51,7 @@ def Multiplicative_decrypt(ciphertext,mI, key):
   if(mI==-1):
     outText="Not Possible GCD(Key,26)!=1 "
   temp=''.join(map(str,outText))
-  return temp.upper()
+  return temp
 
 
 '''
