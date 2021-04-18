@@ -244,10 +244,9 @@ def decrypt(event):
 	keyword = document["keywordIn"].value	
 	mI=0
 	mI=modInverse(int(keyword), 26)
-	#if (mI==-1):
-		
-		#document["decipherBtn"].bind("click", a1)
-	#else:
+	if (mI==-1):
+		document["decipherBtn"].bind("click", a1)
+	
 	res = (Multiplicative_decrypt(text,mI, int(keyword)))
 	document["messageIn"].value = res;
 document["decipherBtn"].bind("click", decrypt)
