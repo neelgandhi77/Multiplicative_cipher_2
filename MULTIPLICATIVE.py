@@ -49,7 +49,7 @@ def Multiplicative_decrypt(ciphertext,mI, key):
       outText.append(newLetter)
   #print(mI)   
   if(mI==-1):
-    outText="Not Possible GCD(Key,26)!=1 "
+    outText="!!! GCD(Key,26)!=1 "
   temp=''.join(map(str,outText))
   return temp
 
