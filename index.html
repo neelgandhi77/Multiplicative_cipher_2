@@ -235,8 +235,8 @@ def encrypt(event):
 
 document["cipherBtn"].bind("click", encrypt)
 
-def a1(event):
-	alert("Multiplicative Inverse Not Possible bcoz GCD!=1")
+
+	
 
 def decrypt(event):
 	mI=0
@@ -245,7 +245,7 @@ def decrypt(event):
 	keyword = document["keywordIn"].value	
 	mI=modInverse(int(keyword), 26)
 	if (mI==-1):
-		document["decipherBtn"].bind("click", a1)
+		alert("Multiplicative Inverse Not Possible bcoz GCD!=1")
 		
 	
 	res = (Multiplicative_decrypt(text,mI, int(keyword)))
