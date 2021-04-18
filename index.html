@@ -128,7 +128,7 @@
 			</div-->
 			<div id='kw' >
 				<div><img src="imgs\keyword.png" class="words"></div>
-				<div><input id='keywordIn'></div>
+				<div><input id='keywordIn'placeholder="Enter Key(0-25)"></div>
 				<div id='clearDiv'>
 					<button id='clearBtn'>
 						clear
@@ -246,11 +246,10 @@ def decrypt(event):
 	mI=modInverse(int(keyword), 26)
 	if (mI==-1):
 		document["decipherBtn"].bind("click", a1)
-		res = (Multiplicative_decrypt(text,mI, int(keyword)))
-		document["messageIn"].value = res;
-	else:
-		res = (Multiplicative_decrypt(text,mI, int(keyword)))
-		document["messageIn"].value = res;
+		
+	
+	res = (Multiplicative_decrypt(text,mI, int(keyword)))
+	document["messageIn"].value = res;
 document["decipherBtn"].bind("click", decrypt)
 
 
