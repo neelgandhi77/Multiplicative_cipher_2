@@ -39,14 +39,14 @@ def Multiplicative_decrypt(ciphertext,mI, key):
   ciphertext=ciphertext.lower()
   for eachLetter in ciphertext:
     if eachLetter in character:
-    # index letters
-    index = character.index(eachLetter)
-    # C = (P * K^-1) mod 26
-    decrypt = (index * mI ) % 26
-    #print(modInverse(key, 26))
-    decryptText.append(decrypt)
-    newLetter = character[decrypt]
-    outText.append(newLetter)
+      # index letters
+      index = character.index(eachLetter)
+      # C = (P * K^-1) mod 26
+      decrypt = (index * mI ) % 26
+      #print(modInverse(key, 26))
+      decryptText.append(decrypt)
+      newLetter = character[decrypt]
+      outText.append(newLetter)
   #print(mI)   
   if(mI==-1):
     outText="!!! GCD(Key,26)!=1 "
